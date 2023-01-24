@@ -1,0 +1,125 @@
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 18
+Server version: 5.5.62 MySQL Community Server (GPL)
+
+Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> create database student;
+ERROR 1007 (HY000): Can't create database 'student'; database exists
+mysql> use student;
+Database changed
+mysql> create table student(name varchar(13),id int(7));
+ERROR 1050 (42S01): Table 'student' already exists
+mysql> desc course;
+ERROR 1146 (42S02): Table 'student.course' doesn't exist
+mysql> create table student(student_name varchar(13),student_id int(7),student_age int(2));
+ERROR 1050 (42S01): Table 'student' already exists
+mysql> create database hospital;
+ERROR 1007 (HY000): Can't create database 'hospital'; database exists
+mysql> create database hosp;;
+Query OK, 1 row affected (0.00 sec)
+
+ERROR:
+No query specified
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| hosp               |
+| hospital           |
+| mysql              |
+| performance_schema |
+| student            |
+| test               |
++--------------------+
+7 rows in set (0.00 sec)
+
+mysql> use student;
+Database changed
+mysql> create table stud (regno int(10), name varchar(20));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> desc stud;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| regno | int(10)     | YES  |     | NULL    |       |
+| name  | varchar(20) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.01 sec)
+
+mysql> use hospital;
+Database changed
+mysql> create table hospi (name varchar(20),age int(2),phno int(10), address varchar(20));
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> desc hospi;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| name    | varchar(20) | YES  |     | NULL    |       |
+| age     | int(2)      | YES  |     | NULL    |       |
+| phno    | int(10)     | YES  |     | NULL    |       |
+| address | varchar(20) | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+4 rows in set (0.02 sec)
+
+mysql> alter table hospi add issue varchar(15);
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc hospi;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| name    | varchar(20) | YES  |     | NULL    |       |
+| age     | int(2)      | YES  |     | NULL    |       |
+| phno    | int(10)     | YES  |     | NULL    |       |
+| address | varchar(20) | YES  |     | NULL    |       |
+| issue   | varchar(15) | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+5 rows in set (0.01 sec)
+
+mysql> alter table hospi drop column issue;
+Query OK, 0 rows affected (0.05 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc hospi;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| name    | varchar(20) | YES  |     | NULL    |       |
+| age     | int(2)      | YES  |     | NULL    |       |
+| phno    | int(10)     | YES  |     | NULL    |       |
+| address | varchar(20) | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+4 rows in set (0.02 sec)
+
+mysql> alrer table hospi add city varchar(10);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'alrer table hospi add city varchar(10)' at line 1
+mysql> alter table hospi add city varchar(10);
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc hospi;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| name    | varchar(20) | YES  |     | NULL    |       |
+| age     | int(2)      | YES  |     | NULL    |       |
+| phno    | int(10)     | YES  |     | NULL    |       |
+| address | varchar(20) | YES  |     | NULL    |       |
+| city    | varchar(10) | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+5 rows in set (0.02 sec)
+
+mysql>
