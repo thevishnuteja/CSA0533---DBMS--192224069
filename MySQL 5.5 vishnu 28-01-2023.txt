@@ -1,0 +1,315 @@
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 22
+Server version: 5.5.62 MySQL Community Server (GPL)
+
+Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> create database faculty;
+Query OK, 1 row affected (0.02 sec)
+
+mysql> use faculty
+Database changed
+mysql> create table fac(fac_id int(5),fac_name varchar(20),fac_dep varchar(10),fac_address varchar(20));
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> desc fac;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| fac_id      | int(5)      | YES  |     | NULL    |       |
+| fac_name    | varchar(20) | YES  |     | NULL    |       |
+| fac_dep     | varchar(10) | YES  |     | NULL    |       |
+| fac_address | varchar(20) | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+mysql> alter table fac
+    -> add primary key (fac_id);
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc fac;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| fac_id      | int(5)      | NO   | PRI | 0       |       |
+| fac_name    | varchar(20) | YES  |     | NULL    |       |
+| fac_dep     | varchar(10) | YES  |     | NULL    |       |
+| fac_address | varchar(20) | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+mysql> create table facu(fac_regno int(8),fac_gender varchar(1));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> desc facu;
++------------+------------+------+-----+---------+-------+
+| Field      | Type       | Null | Key | Default | Extra |
++------------+------------+------+-----+---------+-------+
+| fac_regno  | int(8)     | YES  |     | NULL    |       |
+| fac_gender | varchar(1) | YES  |     | NULL    |       |
++------------+------------+------+-----+---------+-------+
+2 rows in set (0.02 sec)
+
+mysql> alter table facu
+    -> add foreign key (fac_regno) references fac (fac_id);
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc facu;
++------------+------------+------+-----+---------+-------+
+| Field      | Type       | Null | Key | Default | Extra |
++------------+------------+------+-----+---------+-------+
+| fac_regno  | int(8)     | YES  | MUL | NULL    |       |
+| fac_gender | varchar(1) | YES  |     | NULL    |       |
++------------+------------+------+-----+---------+-------+
+2 rows in set (0.02 sec)
+
+mysql> desc fac;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| fac_id      | int(5)      | NO   | PRI | 0       |       |
+| fac_name    | varchar(20) | YES  |     | NULL    |       |
+| fac_dep     | varchar(10) | YES  |     | NULL    |       |
+| fac_address | varchar(20) | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> alter table fac add fac_phno int(10);
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table fac add fac_roomno int(3);
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table fac add fac_salary int(7);
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc fac;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| fac_id      | int(5)      | NO   | PRI | 0       |       |
+| fac_name    | varchar(20) | YES  |     | NULL    |       |
+| fac_dep     | varchar(10) | YES  |     | NULL    |       |
+| fac_address | varchar(20) | YES  |     | NULL    |       |
+| fac_phno    | int(10)     | YES  |     | NULL    |       |
+| fac_roomno  | int(3)      | YES  |     | NULL    |       |
+| fac_salary  | int(7)      | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+7 rows in set (0.02 sec)
+
+mysql> alter table fac drop column fac_address ;
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc fac;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| fac_id     | int(5)      | NO   | PRI | 0       |       |
+| fac_name   | varchar(20) | YES  |     | NULL    |       |
+| fac_dep    | varchar(10) | YES  |     | NULL    |       |
+| fac_phno   | int(10)     | YES  |     | NULL    |       |
+| fac_roomno | int(3)      | YES  |     | NULL    |       |
+| fac_salary | int(7)      | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+6 rows in set (0.03 sec)
+
+mysql> alter table fac add fac_address varchar(20);
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc fac;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| fac_id      | int(5)      | NO   | PRI | 0       |       |
+| fac_name    | varchar(20) | YES  |     | NULL    |       |
+| fac_dep     | varchar(10) | YES  |     | NULL    |       |
+| fac_phno    | int(10)     | YES  |     | NULL    |       |
+| fac_roomno  | int(3)      | YES  |     | NULL    |       |
+| fac_salary  | int(7)      | YES  |     | NULL    |       |
+| fac_address | varchar(20) | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+7 rows in set (0.01 sec)
+
+mysql> insert into fac values ('19222','teja','cse','987654321','320','95000','nellore');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into fac values ('19323','vishnu','it','996544321','676','89000','chennai');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into fac values ('19787','bharath','bio-tech','978765778','898','90000','ongole');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into fac values ('19733','nani','ai&ds','630656545','565','91100','ongole');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into fac values ('19998','krishna','ai&ds','630787787','234','95000','kadapa');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into fac values ('19434','dillu','it','998767787','115','89500','chittore');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into fac values ('19244','hemanth','cse','736565645','887','93000','nellore');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> select * from fac;
++--------+----------+----------+-----------+------------+------------+-------------+
+| fac_id | fac_name | fac_dep  | fac_phno  | fac_roomno | fac_salary | fac_address |
++--------+----------+----------+-----------+------------+------------+-------------+
+|  19222 | teja     | cse      | 987654321 |        320 |      95000 | nellore     |
+|  19244 | hemanth  | cse      | 736565645 |        887 |      93000 | nellore     |
+|  19323 | vishnu   | it       | 996544321 |        676 |      89000 | chennai     |
+|  19434 | dillu    | it       | 998767787 |        115 |      89500 | chittore    |
+|  19733 | nani     | ai&ds    | 630656545 |        565 |      91100 | ongole      |
+|  19787 | bharath  | bio-tech | 978765778 |        898 |      90000 | ongole      |
+|  19998 | krishna  | ai&ds    | 630787787 |        234 |      95000 | kadapa      |
++--------+----------+----------+-----------+------------+------------+-------------+
+7 rows in set (0.02 sec)
+
+mysql> select fac_id,fac_name,fac_dep,fac_phno from fac;
++--------+----------+----------+-----------+
+| fac_id | fac_name | fac_dep  | fac_phno  |
++--------+----------+----------+-----------+
+|  19222 | teja     | cse      | 987654321 |
+|  19244 | hemanth  | cse      | 736565645 |
+|  19323 | vishnu   | it       | 996544321 |
+|  19434 | dillu    | it       | 998767787 |
+|  19733 | nani     | ai&ds    | 630656545 |
+|  19787 | bharath  | bio-tech | 978765778 |
+|  19998 | krishna  | ai&ds    | 630787787 |
++--------+----------+----------+-----------+
+7 rows in set (0.00 sec)
+
+mysql> update fac fac_dep='bio-tech' where fac_id='19998';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '='bio-tech' where fac_id='19998'' at line 1
+mysql> update fac set fac_dep='bio-tech' where fac_id='19998';
+Query OK, 1 row affected (0.02 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from fac;
++--------+----------+----------+-----------+------------+------------+-------------+
+| fac_id | fac_name | fac_dep  | fac_phno  | fac_roomno | fac_salary | fac_address |
++--------+----------+----------+-----------+------------+------------+-------------+
+|  19222 | teja     | cse      | 987654321 |        320 |      95000 | nellore     |
+|  19244 | hemanth  | cse      | 736565645 |        887 |      93000 | nellore     |
+|  19323 | vishnu   | it       | 996544321 |        676 |      89000 | chennai     |
+|  19434 | dillu    | it       | 998767787 |        115 |      89500 | chittore    |
+|  19733 | nani     | ai&ds    | 630656545 |        565 |      91100 | ongole      |
+|  19787 | bharath  | bio-tech | 978765778 |        898 |      90000 | ongole      |
+|  19998 | krishna  | bio-tech | 630787787 |        234 |      95000 | kadapa      |
++--------+----------+----------+-----------+------------+------------+-------------+
+7 rows in set (0.00 sec)
+
+mysql> select * from fac order by fac_id;
++--------+----------+----------+-----------+------------+------------+-------------+
+| fac_id | fac_name | fac_dep  | fac_phno  | fac_roomno | fac_salary | fac_address |
++--------+----------+----------+-----------+------------+------------+-------------+
+|  19222 | teja     | cse      | 987654321 |        320 |      95000 | nellore     |
+|  19244 | hemanth  | cse      | 736565645 |        887 |      93000 | nellore     |
+|  19323 | vishnu   | it       | 996544321 |        676 |      89000 | chennai     |
+|  19434 | dillu    | it       | 998767787 |        115 |      89500 | chittore    |
+|  19733 | nani     | ai&ds    | 630656545 |        565 |      91100 | ongole      |
+|  19787 | bharath  | bio-tech | 978765778 |        898 |      90000 | ongole      |
+|  19998 | krishna  | bio-tech | 630787787 |        234 |      95000 | kadapa      |
++--------+----------+----------+-----------+------------+------------+-------------+
+7 rows in set (0.00 sec)
+
+mysql> select * from fac order by fac_id desc;
++--------+----------+----------+-----------+------------+------------+-------------+
+| fac_id | fac_name | fac_dep  | fac_phno  | fac_roomno | fac_salary | fac_address |
++--------+----------+----------+-----------+------------+------------+-------------+
+|  19998 | krishna  | bio-tech | 630787787 |        234 |      95000 | kadapa      |
+|  19787 | bharath  | bio-tech | 978765778 |        898 |      90000 | ongole      |
+|  19733 | nani     | ai&ds    | 630656545 |        565 |      91100 | ongole      |
+|  19434 | dillu    | it       | 998767787 |        115 |      89500 | chittore    |
+|  19323 | vishnu   | it       | 996544321 |        676 |      89000 | chennai     |
+|  19244 | hemanth  | cse      | 736565645 |        887 |      93000 | nellore     |
+|  19222 | teja     | cse      | 987654321 |        320 |      95000 | nellore     |
++--------+----------+----------+-----------+------------+------------+-------------+
+7 rows in set (0.00 sec)
+
+mysql> select * from fac order by fac_id;
++--------+----------+----------+-----------+------------+------------+-------------+
+| fac_id | fac_name | fac_dep  | fac_phno  | fac_roomno | fac_salary | fac_address |
++--------+----------+----------+-----------+------------+------------+-------------+
+|  19222 | teja     | cse      | 987654321 |        320 |      95000 | nellore     |
+|  19244 | hemanth  | cse      | 736565645 |        887 |      93000 | nellore     |
+|  19323 | vishnu   | it       | 996544321 |        676 |      89000 | chennai     |
+|  19434 | dillu    | it       | 998767787 |        115 |      89500 | chittore    |
+|  19733 | nani     | ai&ds    | 630656545 |        565 |      91100 | ongole      |
+|  19787 | bharath  | bio-tech | 978765778 |        898 |      90000 | ongole      |
+|  19998 | krishna  | bio-tech | 630787787 |        234 |      95000 | kadapa      |
++--------+----------+----------+-----------+------------+------------+-------------+
+7 rows in set (0.00 sec)
+
+mysql> select * from fac order by fac_roomno;
++--------+----------+----------+-----------+------------+------------+-------------+
+| fac_id | fac_name | fac_dep  | fac_phno  | fac_roomno | fac_salary | fac_address |
++--------+----------+----------+-----------+------------+------------+-------------+
+|  19434 | dillu    | it       | 998767787 |        115 |      89500 | chittore    |
+|  19998 | krishna  | bio-tech | 630787787 |        234 |      95000 | kadapa      |
+|  19222 | teja     | cse      | 987654321 |        320 |      95000 | nellore     |
+|  19733 | nani     | ai&ds    | 630656545 |        565 |      91100 | ongole      |
+|  19323 | vishnu   | it       | 996544321 |        676 |      89000 | chennai     |
+|  19244 | hemanth  | cse      | 736565645 |        887 |      93000 | nellore     |
+|  19787 | bharath  | bio-tech | 978765778 |        898 |      90000 | ongole      |
++--------+----------+----------+-----------+------------+------------+-------------+
+7 rows in set (0.02 sec)
+
+mysql> select * from fac where fac_address='nellore';
++--------+----------+---------+-----------+------------+------------+-------------+
+| fac_id | fac_name | fac_dep | fac_phno  | fac_roomno | fac_salary | fac_address |
++--------+----------+---------+-----------+------------+------------+-------------+
+|  19222 | teja     | cse     | 987654321 |        320 |      95000 | nellore     |
+|  19244 | hemanth  | cse     | 736565645 |        887 |      93000 | nellore     |
++--------+----------+---------+-----------+------------+------------+-------------+
+2 rows in set (0.00 sec)
+
+mysql> create std_view as select fac_name,fac_dep,fac_phno,fac_roomno from fac;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'std_view as select fac_name,fac_dep,fac_phno,fac_roomno from fac' at line 1
+mysql> create fac_view as select fac_name,fac_dep,fac_phno,fac_roomno from fac;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'fac_view as select fac_name,fac_dep,fac_phno,fac_roomno from fac' at line 1
+mysql> create view std_view as select fac_name,fac_dep,fac_phno,fac_roomno from fac;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> select * from std_view;
++----------+----------+-----------+------------+
+| fac_name | fac_dep  | fac_phno  | fac_roomno |
++----------+----------+-----------+------------+
+| teja     | cse      | 987654321 |        320 |
+| hemanth  | cse      | 736565645 |        887 |
+| vishnu   | it       | 996544321 |        676 |
+| dillu    | it       | 998767787 |        115 |
+| nani     | ai&ds    | 630656545 |        565 |
+| bharath  | bio-tech | 978765778 |        898 |
+| krishna  | bio-tech | 630787787 |        234 |
++----------+----------+-----------+------------+
+7 rows in set (0.02 sec)
+
+mysql> create index fac_id on fac(fac_name);
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> show index from fac;
++-------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+| Table | Non_unique | Key_name | Seq_in_index | Column_name | Collation | Cardinality | Sub_part | Packed | Null | Index_type | Comment | Index_comment |
++-------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+| fac   |          0 | PRIMARY  |            1 | fac_id      | A         |           2 |     NULL | NULL   |      | BTREE      |         |               |
+| fac   |          1 | fac_id   |            1 | fac_name    | A         |           7 |     NULL | NULL   | YES  | BTREE      |         |               |
++-------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+2 rows in set (0.00 sec)
+
+mysql>
